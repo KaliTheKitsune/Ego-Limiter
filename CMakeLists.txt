@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.19)
 project(Ego_Limiter)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_PREFIX_PATH "C:/QT/6.0.0/msvc2019_64/lib/cmake")
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -20,6 +19,7 @@ endif()
 
 find_package(Qt${QT_VERSION} COMPONENTS ${REQUIRED_LIBS} REQUIRED)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})
+
 if(WIN32)
     set(DEBUG_SUFFIX)
     if (CMAKE_BUILD_TYPE MATCHES "Debug")

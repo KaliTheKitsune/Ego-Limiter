@@ -7,7 +7,6 @@
 
 #include <QtWidgets>
 
-
 class MainWindow : public QWidget{
 
 Q_OBJECT
@@ -17,13 +16,15 @@ public slots:
 
 public:
     MainWindow();
+    ~MainWindow();
 
     int get_xp() const;
     void set_xp(int new_xp);
     int get_level();
     void set_level(int lvl);
     void increment_level();
-    static int get_level_xp(const int *new_level);
+    static int get_level_xp(const int& new_level);
+    static std::string humanize_number(const int& number);
 
 protected:
     // widgets
@@ -31,14 +32,21 @@ protected:
     QProgressBar *pb_level;
     QLabel *l_level;
     QLabel *l_xp;
+    QGraphicsDropShadowEffect *shadow_effect;
 
     // vars
-    int *xp;
-    int *level;
+    int xp;
+    int level;
 
     // functions
-    void set_label_xp(int *xp);
-    void set_label_level(int *lvl);
+    void set_label_xp(const int& xp);
+    void set_label_level(const int& lvl);
+    void update_progress_bar(int value);
+    void refresh_shadow(const int& blur = 25);
+
+    //save functions
+    void save() const;
+    void load();
 };
 
 
